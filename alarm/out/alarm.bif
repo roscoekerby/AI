@@ -1,0 +1,45 @@
+network "alarm" {
+// written by aGrUM 0.22.2
+}
+
+variable a {
+   type discrete[2] {0, 1};
+}
+
+variable b {
+   type discrete[2] {0, 1};
+}
+
+variable e {
+   type discrete[2] {0, 1};
+}
+
+variable j {
+   type discrete[2] {0, 1};
+}
+
+variable m {
+   type discrete[2] {0, 1};
+}
+
+probability (a | b, e) {
+   (0, 0) 0.999 0.001;
+   (1, 0) 0.06 0.94;
+   (0, 1) 0.71 0.29;
+   (1, 1) 0.05 0.95;
+}
+probability (b) {
+   default 0.999 0.001;
+}
+probability (e) {
+   default 0.998 0.002;
+}
+probability (j | a) {
+   (0) 0.95 0.05;
+   (1) 0.1 0.9;
+}
+probability (m | a) {
+   (0) 0.99 0.01;
+   (1) 0.3 0.7;
+}
+
