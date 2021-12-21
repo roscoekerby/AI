@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+
+<BIF VERSION="0.3">
+<NETWORK>
+
+<!-- Variables -->
+<VARIABLE TYPE="nature">
+	<NAME>Person has Covid-19</NAME>
+	<PROPERTY>Person has Covid-19</PROPERTY>
+	<OUTCOME>True</OUTCOME>
+	<OUTCOME>False</OUTCOME>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Person goes to gym</NAME>
+	<PROPERTY>Person goes to gym</PROPERTY>
+	<OUTCOME>True</OUTCOME>
+	<OUTCOME>False</OUTCOME>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Symptom checkpoint fails</NAME>
+	<PROPERTY>Symptom checkpoint fails</PROPERTY>
+	<OUTCOME>True</OUTCOME>
+	<OUTCOME>False</OUTCOME>
+</VARIABLE>
+
+<VARIABLE TYPE="decision">
+	<NAME>Water fountain switched off</NAME>
+	<PROPERTY>Water fountain switched off</PROPERTY>
+	<OUTCOME>Yes</OUTCOME>
+	<OUTCOME>No</OUTCOME>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Dehydration risk increase</NAME>
+	<PROPERTY>Dehydration risk increase</PROPERTY>
+	<OUTCOME>True</OUTCOME>
+	<OUTCOME>False</OUTCOME>
+</VARIABLE>
+
+<VARIABLE TYPE="utility">
+	<NAME>Utility</NAME>
+	<PROPERTY>Utility</PROPERTY>
+	<OUTCOME>0</OUTCOME>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Spreads Covid-19</NAME>
+	<PROPERTY>Spreads Covid-19</PROPERTY>
+	<OUTCOME>True</OUTCOME>
+	<OUTCOME>False</OUTCOME>
+</VARIABLE>
+
+<!-- Probability distributions -->
+<DEFINITION>
+	<FOR>Person has Covid-19</FOR>
+	<TABLE>0.00020494 0.999795 </TABLE>
+</DEFINITION>
+<DEFINITION>
+	<FOR>Person goes to gym</FOR>
+	<GIVEN>Person has Covid-19</GIVEN>
+	<TABLE>0.0239534 0.976047 0.0239534 0.976047 </TABLE>
+</DEFINITION>
+<DEFINITION>
+	<FOR>Symptom checkpoint fails</FOR>
+	<GIVEN>Person goes to gym</GIVEN>
+	<TABLE>0.1 0.9 0.1 0.9 </TABLE>
+</DEFINITION>
+<DEFINITION>
+	<FOR>Water fountain switched off</FOR>
+	<GIVEN>Symptom checkpoint fails</GIVEN>
+</DEFINITION>
+<DEFINITION>
+	<FOR>Dehydration risk increase</FOR>
+	<GIVEN>Water fountain switched off</GIVEN>
+	<TABLE>0.75 0.25 0 1 </TABLE>
+</DEFINITION>
+<DEFINITION>
+	<FOR>Utility</FOR>
+	<GIVEN>Dehydration risk increase</GIVEN>
+	<GIVEN>Spreads Covid-19</GIVEN>
+	<TABLE>-100 -100 -25 25 </TABLE>
+</DEFINITION>
+<DEFINITION>
+	<FOR>Spreads Covid-19</FOR>
+	<GIVEN>Water fountain switched off</GIVEN>
+	<TABLE>0 1 0.001 0.999 </TABLE>
+</DEFINITION>
+
+</NETWORK>
+</BIF>
