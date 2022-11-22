@@ -9,9 +9,9 @@ import multiprocessing
 
 # show images without blocking using multiprocessing
 def plot(query_file_name_p, file_name_p, draw_matches_p):
-    plt.title(query_file_name + ' => ' + file_name)
-    plt.get_current_fig_manager().set_window_title(query_file_name + ' => ' + file_name)
-    plt.imshow(draw_matches, ), plt.show()
+    plt.title(query_file_name_p + ' => ' + file_name_p)
+    plt.get_current_fig_manager().set_window_title(query_file_name_p + ' => ' + file_name_p)
+    plt.imshow(draw_matches_p, ), plt.show()
 
 
 # data for dataframe
@@ -72,13 +72,16 @@ for query_file_name in os.listdir("query/"):
             draw_matches = cv.drawMatchesKnn(query_image, kp1, current_image, kp2, matches, None,
                                              **draw_params)  # draws matching lines
 
-            if match_count > 20:  # show good images without blocking using multiprocessing
-                simulate = multiprocessing.Process(None, plot, args=(query_file_name, file_name, draw_matches,))
-                simulate.start()
+            # if match_count > 3:  # show good images without blocking using multiprocessing
+                # simulate = multiprocessing.Process(None, plot, args=(query_file_name, best_file_name, draw_matches,))
+                # simulate.start()
     # add data to data dictionary
     data["query_file_name"].append(query_file_name)
     data["matched_file_name"].append(best_file_name)
     data["match_points"].append(best_number_matches)
+
+    simulate = multiprocessing.Process(None, plot, args=(query_file_name, best_file_name, draw_matches,))
+    simulate.start()
 
     print("{}/{}".format(file_count, number_of_query_files))  # indicates the progess of the program
     file_count = file_count + 1  # next file
