@@ -1,0 +1,13 @@
+# Ignore all image files in yolo11 directory and its subdirectories
+yolo11/**/*.jpg
+yolo11/**/*.jpeg
+yolo11/**/*.png
+yolo11/**/*.gif
+yolo11/**/*.bmp
+
+# Ignore all image files in resnet directory and its subdirectories
+resnet/**/*.jpg
+resnet/**/*.jpeg
+resnet/**/*.png
+resnet/**/*.gif
+resnet/**/*.bmp
