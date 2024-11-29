@@ -76,5 +76,3 @@ For questions or collaboration, feel free to connect:
 ---
 
 Happy coding!
-```
-
