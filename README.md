@@ -1,9 +1,4 @@
-### **Repository Description**
-> A collection of Artificial Intelligence projects showcasing Bayesian Networks, Neural Networks, and Machine Learning techniques. Includes applications in classification, detection, and real-world problem solving with Python and Jupyter Notebooks.
-
----
-
-### **Improved README**
+### **README**
 
 ```markdown
 # Artificial Intelligence Projects
